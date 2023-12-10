@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Gallary</title>
+<style>
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  margin: 0rem;
+  overflow: hidden;
+  
+}
+#image-track > .image {
+  width: 40vmin;
+  height: 57vmin;
+  object-fit: cover;
+  object-position: center;
+}
+
+#image-track {
+display: flex;
+gap: 4vmin;
+position: absolute;
+top: 51.5%;
+transform: translate(0%, -50%);
+}
+
+h1{
+color:white;
+font-size: 2rem;
+font-family: "Space Mono", monospace;
+padding: 50px;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+<center><h1> Biranchi's Gallery </h1></center>
+<div id="image-track">
+  <img class="image" src="./../Images/public.png" draggable="true" />
+  <img class="image" src="./../Images/en.jpg" draggable="true" />
+  <img class="image" src="./../Images/biranchi.jpg" draggable="true" />
+  <img class="image" src="./../Images/prize.jpg" draggable="true" />
+  <img class="image" src="./../Images/mocktest.jpg" draggable="true" />
+  <img class="image" src="./../Images/public.png" draggable="true" />
+  <img class="image" src="./../Images/en.jpg" draggable="true" />
+  <img class="image" src="./../Images/biranchi.jpg" draggable="true" />
+</div>
+<script>
+
+
+const imageTrack = document.getElementById("image-track");
+
+window.onmousedown = e => {
+    imageTrack.setAttribute("data-mouse-down-at", e.clientX);
+}
+
+window.onmouseup = () => {
+    imageTrack.setAttribute("data-mouse-down-at", "0");
+}
+
+window.onmousemove = e => {
+    const mouseDelta = parseFloat(imageTrack.getAttribute("data-mouse-down-at")) - e.clientX;
+    const maxDelta = window.innerWidth / 2;
+    const percentage = (mouseDelta / maxDelta) * -100;
+
+    imageTrack.style.transform = `translate(${percentage}%, -50%)`;
+}
+Math.min(nextPercentage, 0);
+Math.mac(nextPercentage, -100);
+</script>
+</body>
+</html>

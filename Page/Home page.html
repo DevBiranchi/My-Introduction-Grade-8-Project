@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>
+Biranchi Shah
+</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+font-family: poppins;
+}
+
+#blob {
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: linear-gradient(
+    to right, 
+    aquamarine,
+    mediumpurple
+  );
+}
+
+
+@keyframes rotate {
+  from {
+     rotate: 0deg;
+  }
+50% {
+scale: 1 1.5;
+}
+  to {
+   rotate:360deg;
+  }
+}
+#blob {
+  animation: rotate 20s infinite;
+filter: blur(200px);
+}
+#blur {
+height: 100%;
+width: 100%;
+position: absolute;
+z-index: 2;
+backdrop-filter: blur(200px);
+}
+
+body {
+  background-color: black;
+}
+
+.banner{
+width: 100%;
+height: 100vh;
+background-size: cover;
+background-position: center;
+}
+.navbar{
+width: 85%;
+margin: auto;
+padding: 35px 0;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.navbar ul li{
+list-style: none;
+display: inline-block;
+margin: 0 20px;
+position: relative;
+}
+.navbar ul li a{
+text-decoration: none;
+color: #fff;
+text-transform: uppercase;
+}
+.navbar ul li::after{
+content: '';
+height: 3px;
+width: 0;
+background: #009688;
+position: absolute;
+left: 0;
+bottom: -10px;
+transition: 0.5s;
+}
+.navbar ul li:hover::after{
+width: 100%
+}
+#blob {
+  pointer-events: none;
+}
+.content{  
+  z-index: 3;
+  text-align: center;
+  color: white;
+  width: 100%;
+  position: absolute;
+  top: 50%
+  transform: translateY(-50%);
+}
+.content h1{
+font-size: 70px;
+margin-top: 80px;
+}
+.content p{
+margin: 20px auto;
+font-weight: 100;
+line-height: 25px;
+}
+button{
+width: 200px;
+padding: 15px 0;
+text align: center;
+margin: 20px 10px;
+border-radius: 25px;
+font-weight: bold;
+border: 2px solid #009688;
+background: transparent;
+color: #fff;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+}
+span{
+background: #009688;
+height: 100%;
+width: 100%
+border-radius: 25px;
+position:absolute;
+left: 0;
+bottom: 0;
+z-index: -1;
+}
+a{
+color: #fff;
+text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div class="banner">
+<div class="navbar">
+<ul>
+<li><a href="#">Name - Biranchi Shah</a></li>
+<li><a href="#">Class - 8</a></li>
+<li><a href="#">Sec - A</a></li>
+<li><a href="#">Roll - 23</a></li>
+</ul>
+</div>
+<div class="content">
+<h1> WELCOME </h1>
+<p>Hello! My name is Biranchi Shah and I have a great interest in <br> Web-development!</p>
+<div>
+<button type="button"><span></span><a href="./aboutme.html" target="_blank">ABOUT ME</a></button>
+<button type="button"><span></span><a href="./Gallary.html" target="_blank">GALLARY</a></button>
+</div>
+</div>
+</div>
+
+<div id="blob"></div>
+<div id="blur"></div>
+<script>
+const blob = document.getElementById("blob");
+
+document.body.onpointermove = event => {
+const { clientX, clientY } = event;
+
+blob.animate({
+left: `${clientX}px`,
+top: `${clientY}px`
+}, { duration: 3000, fill: "forwards" });
+}
+</script>
+</body>
+</html>
